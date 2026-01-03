@@ -1,0 +1,54 @@
+:root {
+  --bg-color-main: #1a1a1a;
+  --bg-color-card: #2a2a2a;
+  --bg-color-input: #333333;
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #cccccc;
+  --accent-color-blue: #007bff;
+  --accent-color-green: #28a745;
+  --accent-color-red: #dc3545;
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color-main);
+  color: var(--text-color-primary);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--accent-color-blue);
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* Scrollbar styles for detailed aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}

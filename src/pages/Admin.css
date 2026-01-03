@@ -1,0 +1,79 @@
+.admin-container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color-primary);
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-color-card);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.user-table th,
+.user-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.user-table th {
+    background-color: #222;
+    font-weight: 600;
+    color: var(--accent-color-blue);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.user-table tr:hover {
+    background-color: #333;
+}
+
+.user-table tr:last-child td {
+    border-bottom: none;
+}
+
+.action-btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.edit-btn {
+    background-color: transparent;
+    border-color: var(--accent-color-green);
+    color: var(--accent-color-green);
+}
+
+.edit-btn:hover {
+    background-color: var(--accent-color-green);
+    color: white;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border-color: var(--accent-color-red);
+    color: var(--accent-color-red);
+}
+
+.delete-btn:hover {
+    background-color: var(--accent-color-red);
+    color: white;
+}

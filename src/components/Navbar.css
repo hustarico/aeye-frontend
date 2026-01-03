@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--bg-color-card);
+    border-bottom: 1px solid #333;
+}
+
+.logo-placeholder {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color-blue);
+    /* "Aeye" style */
+    letter-spacing: 1px;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-color-secondary);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--text-color-primary);
+}
+
+.logout-btn {
+    background-color: transparent;
+    border: 1px solid var(--accent-color-red);
+    color: var(--accent-color-red);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: var(--accent-color-red);
+    color: white;
+}
