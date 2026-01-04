@@ -77,3 +77,184 @@ h1 {
     background-color: var(--accent-color-red);
     color: white;
 }
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-in;
+}
+
+.modal-content {
+    background-color: var(--bg-color-card);
+    padding: 2rem;
+    border-radius: 8px;
+    min-width: 400px;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s ease-out;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--accent-color-blue);
+    text-align: center;
+}
+
+.modal-username {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-color-secondary);
+}
+
+.modal-username strong {
+    color: var(--text-color-primary);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color-secondary);
+    font-weight: 500;
+}
+
+.role-select {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--bg-color-input);
+    color: var(--text-color-primary);
+    border: 1px solid #444;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.role-select:focus {
+    outline: none;
+    border-color: var(--accent-color-blue);
+}
+
+.role-select option {
+    background-color: var(--bg-color-input);
+    color: var(--text-color-primary);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.modal-btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    border: 1px solid #666;
+    color: var(--text-color-secondary);
+}
+
+.cancel-btn:hover {
+    background-color: #333;
+    border-color: #888;
+}
+
+.save-btn {
+    background-color: var(--accent-color-blue);
+    border: 1px solid var(--accent-color-blue);
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Notification Toast */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    z-index: 2000;
+    animation: slideInRight 0.3s ease-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.notification.success {
+    background-color: var(--accent-color-green);
+    color: white;
+}
+
+.notification.error {
+    background-color: var(--accent-color-red);
+    color: white;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.delete-confirm-btn {
+    background-color: var(--accent-color-red);
+    border: 1px solid var(--accent-color-red);
+    color: white;
+}
+
+.delete-confirm-btn:hover {
+    background-color: #b02a37;
+    border-color: #b02a37;
+}

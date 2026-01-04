@@ -14,12 +14,9 @@ const ProtectedRoute = ({ roles }) => {
     }
 
     if (roles && user) {
-        // Check if user has at least one of the required roles
-        // Assuming user.roles is an array of strings like ['ROLE_USER', 'ROLE_ADMIN']
-        // Verify structure with backend ref later if needed.
-        const hasRole = roles.some(role => user.roles?.includes(role));
+        // user.role is a string like "ROLE_USER" or "ROLE_MANAGER"
+        const hasRole = roles.includes(user.role);
         if (!hasRole) {
-            // Redirect to feed if authorized but not for this role, or login
             return <Navigate to="/feed" replace />;
         }
     }

@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import api from '../services/api';
+import { jwtDecode } from "jwt-decode";
 
 const AuthContext = createContext(null);
 
@@ -8,41 +9,38 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [loading, setLoading] = useState(true);
 
+    const decodeAndSetUser = (currentToken) => {
+        try {
+            const decodedPromise = jwtDecode(currentToken);
+            // Assuming the JWT structure has 'sub' for username and 'role' for role
+            // Prompt says: "role": "ROLE_{rolename}"
+            setUser({
+                username: decodedPromise.sub || 'User', // Fallback
+                role: decodedPromise.role || 'ROLE_USER'
+            });
+        } catch (error) {
+            console.error("Invalid token", error);
+            setToken(null);
+            setUser(null);
+            localStorage.removeItem('token');
+        }
+    };
+
     useEffect(() => {
         if (token) {
-            // Decode token or check validity if needed. 
-            // For now, assuming token implies auth, but we might want to fetch user details.
-            // Since the prompt doesn't specify a "me" endpoint, we might rely on initial login data
-            // or decode JWT. For simplicity as per prompt, we just store token.
-            // Ideally, we'd decode the JWT to get roles here if not stored separately.
-
-            // Let's assume we decode the token or have stored user info. 
-            // If prompt implies just storing token, we might need to rely on decoding it 
-            // or fetching user roles. The prompt mentions "ROLE_USER", etc.
-            // Usually these are in the JWT payload.
-
-            // Mocking user restoration from token or local storage if we stored user there too.
-            // Or we can parse the JWT payload (claims).
-            // For this implementation, I'll assume we might persist user roles too or decode them.
-            // Let's safe-guard by checking if we have user data. 
-            const storedUser = localStorage.getItem('user');
-            if (storedUser) {
-                setUser(JSON.parse(storedUser));
-            }
+            decodeAndSetUser(token);
         }
         setLoading(false);
     }, [token]);
 
-    const login = (newToken, userData) => {
+    const login = (newToken) => {
         setToken(newToken);
-        setUser(userData);
         localStorage.setItem('token', newToken);
-        localStorage.setItem('user', JSON.stringify(userData));
+        // decodeAndSetUser is triggered by useEffect on token change
     };
 
     const logout = async () => {
         try {
-            // Attempt backend logout
             await api.post('/auth/logout');
         } catch (error) {
             console.error("Logout failed on backend", error);

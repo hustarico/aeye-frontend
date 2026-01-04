@@ -11,8 +11,7 @@ const Navbar = () => {
     // Usually Navbar is visible when logged in. Let's assume hidden on Login page if we want, or visible but limited.
     // Prompt says "Links to Feed, Analytics (if Manager), Admin (if Admin)..." which implies authenticated state.
 
-    const isManager = user?.roles?.includes('ROLE_MANAGER');
-    const isAdmin = user?.roles?.includes('ROLE_ADMIN');
+    // Updated logic: direct check on user.role string
 
     return (
         <nav className="navbar">
@@ -21,8 +20,12 @@ const Navbar = () => {
             </div>
             <div className="navbar-right">
                 <Link to="/feed" className="nav-link">Feed</Link>
-                {isManager && <Link to="/analytics" className="nav-link">Analytics</Link>}
-                {isAdmin && <Link to="/admin" className="nav-link">Admin</Link>}
+                {(user?.role === 'ROLE_MANAGER' || user?.role === 'ROLE_ADMIN') && (
+                    <Link to="/analytics" className="nav-link">Analytics</Link>
+                )}
+                {user?.role === 'ROLE_ADMIN' && (
+                    <Link to="/admin" className="nav-link">Admin</Link>
+                )}
                 <button onClick={logout} className="logout-btn">Logout</button>
             </div>
         </nav>

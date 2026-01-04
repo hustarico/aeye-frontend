@@ -40,7 +40,7 @@ const Login = () => {
 
                 const tokenVal = response.data.token || response.data.accessToken || (typeof response.data === 'string' ? response.data : null);
 
-                login(tokenVal, response.data.user || { username: formData.username, roles: ['ROLE_USER'] });
+                login(tokenVal);
                 navigate('/feed');
             } else {
                 // REGISTER
@@ -58,7 +58,12 @@ const Login = () => {
 
                 await api.post('/auth/register', registerPayload);
                 setIsLogin(true);
-                alert('Registration successful! Please login.');
+                setError('');
+                setFormData({ username: '', password: '', phoneNumber: '', confirmPassword: '' });
+                // Success message will be shown via error state with success styling
+                setTimeout(() => {
+                    setError('Registration successful! Please login.');
+                }, 100);
             }
         } catch (err) {
             console.error(err);
