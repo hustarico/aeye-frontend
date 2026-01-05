@@ -70,7 +70,7 @@ const Feed = () => {
                     ) : (
                         <div className="placeholder">Loading Cam 1...</div>
                     )}
-                    <div className="cam-label">Camera 01</div>
+                    <div className="cam-label">Live Feed</div>
                 </div>
                 <div className="cam-feed">
                     <div className="live-indicator">
@@ -81,7 +81,7 @@ const Feed = () => {
                     ) : (
                         <div className="placeholder">Loading Cam 2...</div>
                     )}
-                    <div className="cam-label">Camera 02</div>
+                    <div className="cam-label">Last Threat</div>
                 </div>
             </div>
         </div>
