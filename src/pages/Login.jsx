@@ -12,13 +12,17 @@ const Login = () => {
         phoneNumber: '',
         confirmPassword: ''
     });
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const { login } = useAuth();
     const navigate = useNavigate();
 
     const toggleMode = () => {
         setIsLogin(!isLogin);
         setError('');
+        setSuccess('');
         setFormData({ username: '', password: '', phoneNumber: '', confirmPassword: '' });
     };
 
@@ -29,6 +33,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+        setSuccess('');
 
         try {
             if (isLogin) {
@@ -60,10 +65,7 @@ const Login = () => {
                 setIsLogin(true);
                 setError('');
                 setFormData({ username: '', password: '', phoneNumber: '', confirmPassword: '' });
-                // Success message will be shown via error state with success styling
-                setTimeout(() => {
-                    setError('Registration successful! Please login.');
-                }, 100);
+                setSuccess('Registration successful! Please login.');
             }
         } catch (err) {
             console.error(err);
@@ -80,6 +82,7 @@ const Login = () => {
             <div className="auth-card">
                 <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
                 {error && <div className="error-message">{error}</div>}
+                {success && <div className="success-message">{success}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Username</label>
@@ -105,24 +108,44 @@ const Login = () => {
                     )}
                     <div className="form-group">
                         <label>Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                        />
+                        <div className="password-input-wrapper">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="toggle-password-btn"
+                                onClick={() => setShowPassword(!showPassword)}
+                                tabIndex="-1"
+                            >
+                                {showPassword ? "Hide" : "Show"}
+                            </button>
+                        </div>
                     </div>
                     {!isLogin && (
                         <div className="form-group">
                             <label>Confirm Password</label>
-                            <input
-                                type="password"
-                                name="confirmPassword"
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                required
-                            />
+                            <div className="password-input-wrapper">
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    name="confirmPassword"
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    className="toggle-password-btn"
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    tabIndex="-1"
+                                >
+                                    {showConfirmPassword ? "Hide" : "Show"}
+                                </button>
+                            </div>
                         </div>
                     )}
                     <button type="submit" className="auth-btn">

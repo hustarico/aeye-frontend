@@ -88,3 +88,43 @@
     margin-bottom: 1rem;
     font-size: 0.9rem;
 }
+
+.success-message {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--accent-color-green);
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    padding-right: 3.5rem;
+    /* Space for the button */
+}
+
+.toggle-password-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--accent-color-blue);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.toggle-password-btn:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
