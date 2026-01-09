@@ -48,12 +48,13 @@ const Feed = () => {
         const intervalId = setInterval(() => {
             fetchImage(1, setImage1);
             fetchImage(2, setImage2);
-        }, 500);
+        }, 100); // 1000ms / 15 requests ≈ 66ms
 
         return () => {
             clearInterval(intervalId);
-            if (image1) URL.revokeObjectURL(image1);
-            if (image2) URL.revokeObjectURL(image2);
+            // Cleanup on unmount
+            setImage1(prev => { if (prev) URL.revokeObjectURL(prev); return null; });
+            setImage2(prev => { if (prev) URL.revokeObjectURL(prev); return null; });
         };
     }, []);
 
