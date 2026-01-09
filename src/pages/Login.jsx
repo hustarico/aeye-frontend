@@ -80,7 +80,7 @@ const Login = () => {
     return (
         <div className="auth-container">
             <div className="auth-card">
-                <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
+                <h2>{isLogin ? 'Login' : 'Register'}</h2>
                 {error && <div className="error-message">{error}</div>}
                 {success && <div className="success-message">{success}</div>}
                 <form onSubmit={handleSubmit}>
@@ -149,12 +149,12 @@ const Login = () => {
                         </div>
                     )}
                     <button type="submit" className="auth-btn">
-                        {isLogin ? 'Login' : 'Sign Up'}
+                        {isLogin ? 'Login' : 'Register'}
                     </button>
                 </form>
                 <div className="toggle-text">
                     {isLogin ? "Don't have an account? " : "Already have an account? "}
-                    <span onClick={toggleMode}>{isLogin ? 'Sign Up' : 'Login'}</span>
+                    <span onClick={toggleMode}>{isLogin ? 'Register' : 'Login'}</span>
                 </div>
             </div>
         </div>
