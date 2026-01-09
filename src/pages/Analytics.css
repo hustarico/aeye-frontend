@@ -116,7 +116,39 @@
     color: var(--text-color-primary);
 }
 
+/* Updated nth-child(3) for the Type column */
 .threat-table td:nth-child(3) {
+    text-align: center;
+    width: 120px;
+}
+
+.threat-type-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.threat-type-tag.gun {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.threat-type-tag.knife {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+/* Added nth-child(4) for the Timestamp column */
+.threat-table td:nth-child(4) {
     color: var(--text-color-secondary);
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
     font-size: 0.9rem;

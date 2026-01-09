@@ -10,7 +10,7 @@ const Analytics = () => {
     useEffect(() => {
         const fetchAnalytics = async () => {
             try {
-                const response = await api.get('/api/analytics', {
+                const response = await api.get('/api/images/3', {
                     responseType: 'blob',
                     params: { t: Date.now() }
                 });
@@ -79,6 +79,7 @@ const Analytics = () => {
                                 <tr>
                                     <th>#</th>
                                     <th>Camera</th>
+                                    <th>Type</th>
                                     <th>Timestamp</th>
                                 </tr>
                             </thead>
@@ -88,12 +89,17 @@ const Analytics = () => {
                                         <tr key={index}>
                                             <td>{index + 1}</td>
                                             <td>{threat.cameraName}</td>
+                                            <td>
+                                                <span className={`threat-type-tag ${threat.type?.toLowerCase()}`}>
+                                                    {threat.type || 'Unknown'}
+                                                </span>
+                                            </td>
                                             <td>{formatTimestamp(threat.timestamp)}</td>
                                         </tr>
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan="3" className="no-data">No threats detected</td>
+                                        <td colSpan="4" className="no-data">No threats detected</td>
                                     </tr>
                                 )}
                             </tbody>

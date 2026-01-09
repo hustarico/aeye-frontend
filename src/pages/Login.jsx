@@ -99,11 +99,13 @@ const Login = () => {
                     errorMessage = data.error;
                 }
 
-                // Specifically catch "phone number already in use" cases if they look like backend stack traces or generic messages
-                if (errorMessage.toLowerCase().includes('phone') && (errorMessage.toLowerCase().includes('exists') || errorMessage.toLowerCase().includes('use'))) {
-                    errorMessage = 'This phone number is already registered.';
-                } else if (errorMessage.toLowerCase().includes('username') && (errorMessage.toLowerCase().includes('exists') || errorMessage.toLowerCase().includes('use'))) {
-                    errorMessage = 'This username is already taken. Please choose another one.';
+                // Specifically catch "phone number already in use" cases during registration
+                if (!isLogin) {
+                    if (errorMessage.toLowerCase().includes('phone') && (errorMessage.toLowerCase().includes('exists') || errorMessage.toLowerCase().includes('use'))) {
+                        errorMessage = 'This phone number is already registered.';
+                    } else if (errorMessage.toLowerCase().includes('username') && (errorMessage.toLowerCase().includes('exists') || errorMessage.toLowerCase().includes('use'))) {
+                        errorMessage = 'This username is already taken. Please choose another one.';
+                    }
                 }
             }
 
