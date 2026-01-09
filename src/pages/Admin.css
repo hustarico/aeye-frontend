@@ -1,45 +1,56 @@
 .admin-container {
-    padding: 2rem;
-    max-width: 1000px;
+    padding: 3rem 2rem;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     color: var(--text-color-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .table-responsive {
-    overflow-x: auto;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .user-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: var(--bg-color-card);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    overflow: hidden;
+    background-color: var(--glass-bg);
 }
 
 .user-table th,
 .user-table td {
-    padding: 1rem;
+    padding: 1.25rem 1.5rem;
     text-align: left;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .user-table th {
-    background-color: #222;
+    background-color: rgba(15, 23, 42, 0.8);
     font-weight: 600;
     color: var(--accent-color-blue);
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.user-table tr {
+    transition: background-color 0.2s ease;
 }
 
 .user-table tr:hover {
-    background-color: #333;
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
 .user-table tr:last-child td {
@@ -47,35 +58,38 @@ h1 {
 }
 
 .action-btn {
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    margin-right: 0.5rem;
-    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-right: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 600;
     border: 1px solid transparent;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .edit-btn {
-    background-color: transparent;
-    border-color: var(--accent-color-green);
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
     color: var(--accent-color-green);
 }
 
 .edit-btn:hover {
     background-color: var(--accent-color-green);
-    color: white;
+    color: #0b1120;
+    transform: translateY(-2px);
 }
 
 .delete-btn {
-    background-color: transparent;
-    border-color: var(--accent-color-red);
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
     color: var(--accent-color-red);
 }
 
 .delete-btn:hover {
     background-color: var(--accent-color-red);
     color: white;
+    transform: translateY(-2px);
 }
 
 /* Modal Styles */
@@ -85,110 +99,113 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn 0.2s ease-in;
+    animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
-    background-color: var(--bg-color-card);
-    padding: 2rem;
-    border-radius: 8px;
+    background-color: #161e31;
+    padding: 3rem;
+    border-radius: 24px;
     min-width: 400px;
     max-width: 500px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    animation: slideIn 0.3s ease-out;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .modal-content h2 {
     margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--accent-color-blue);
-    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color-primary);
+    font-size: 1.75rem;
+    font-weight: 700;
 }
 
 .modal-username {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: var(--text-color-secondary);
+    background-color: rgba(15, 23, 42, 0.5);
+    padding: 0.75rem;
+    border-radius: 12px;
 }
 
 .modal-username strong {
-    color: var(--text-color-primary);
+    color: var(--accent-color-blue);
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     color: var(--text-color-secondary);
     font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .role-select {
     width: 100%;
-    padding: 0.75rem;
-    background-color: var(--bg-color-input);
+    padding: 1rem;
+    background-color: rgba(15, 23, 42, 0.8);
     color: var(--text-color-primary);
-    border: 1px solid #444;
-    border-radius: 4px;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
     font-size: 1rem;
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: all 0.3s ease;
 }
 
 .role-select:focus {
     outline: none;
     border-color: var(--accent-color-blue);
-}
-
-.role-select option {
-    background-color: var(--bg-color-input);
-    color: var(--text-color-primary);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
 }
 
 .modal-actions {
     display: flex;
     gap: 1rem;
-    justify-content: flex-end;
-    margin-top: 2rem;
+    justify-content: stretch;
 }
 
 .modal-btn {
-    padding: 0.6rem 1.5rem;
-    border-radius: 4px;
+    flex: 1;
+    padding: 1rem;
+    border-radius: 12px;
     font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.2s;
+    font-size: 1rem;
+    transition: all 0.3s ease;
     cursor: pointer;
+    border: none;
 }
 
 .cancel-btn {
     background-color: transparent;
-    border: 1px solid #666;
+    border: 1px solid var(--glass-border);
     color: var(--text-color-secondary);
 }
 
 .cancel-btn:hover {
-    background-color: #333;
-    border-color: #888;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color-primary);
 }
 
 .save-btn {
-    background-color: var(--accent-color-blue);
-    border: 1px solid var(--accent-color-blue);
-    color: white;
+    background: var(--gradient-primary);
+    color: #0b1120;
 }
 
 .save-btn:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(45, 212, 191, 0.3);
 }
 
 @keyframes fadeIn {
@@ -201,34 +218,37 @@ h1 {
     }
 }
 
-@keyframes slideIn {
+@keyframes zoomIn {
     from {
-        transform: translateY(-50px);
         opacity: 0;
+        transform: scale(0.95);
     }
 
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: scale(1);
     }
 }
 
 /* Notification Toast */
 .notification {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 1rem 1.5rem;
-    border-radius: 4px;
-    font-weight: 500;
+    top: 30px;
+    right: 30px;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
     z-index: 2000;
-    animation: slideInRight 0.3s ease-out;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    animation: slideInLeft 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .notification.success {
     background-color: var(--accent-color-green);
-    color: white;
+    color: #0b1120;
 }
 
 .notification.error {
@@ -236,9 +256,9 @@ h1 {
     color: white;
 }
 
-@keyframes slideInRight {
+@keyframes slideInLeft {
     from {
-        transform: translateX(400px);
+        transform: translateX(100%);
         opacity: 0;
     }
 
@@ -250,11 +270,10 @@ h1 {
 
 .delete-confirm-btn {
     background-color: var(--accent-color-red);
-    border: 1px solid var(--accent-color-red);
     color: white;
 }
 
 .delete-confirm-btn:hover {
-    background-color: #b02a37;
-    border-color: #b02a37;
+    background-color: #ef4444;
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
 }

@@ -2,23 +2,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: var(--bg-color-main);
+    min-height: 100vh;
+    background: radial-gradient(circle at 0% 0%, #0f172a 0%, #0b1120 100%);
+    padding: 2rem;
 }
 
 .auth-card {
-    background-color: var(--bg-color-card);
-    padding: 2.5rem;
-    border-radius: 8px;
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 3rem;
+    border-radius: 24px;
     width: 100%;
-    max-width: 400px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 450px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
 .auth-card h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     color: var(--text-color-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .form-group {
@@ -30,42 +37,51 @@
     display: block;
     margin-bottom: 0.5rem;
     color: var(--text-color-secondary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-left: 4px;
 }
 
 .form-group input {
     width: 100%;
-    padding: 0.8rem;
-    border-radius: 4px;
-    border: 1px solid #444;
-    background-color: var(--bg-color-input);
+    padding: 0.85rem 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(15, 23, 42, 0.5);
     color: white;
     font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
 }
 
 .form-group input:focus {
     outline: none;
     border-color: var(--accent-color-blue);
+    background-color: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
 }
 
 .auth-btn {
     width: 100%;
-    padding: 0.8rem;
-    background-color: var(--accent-color-blue);
-    color: white;
-    border-radius: 4px;
+    padding: 0.85rem;
+    background: var(--gradient-primary);
+    color: #0b1120;
+    border-radius: 12px;
     font-size: 1rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    transition: background-color 0.2s;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
 }
 
 .auth-btn:hover {
-    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(45, 212, 191, 0.3);
+    filter: brightness(1.1);
 }
 
 .toggle-text {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     font-size: 0.9rem;
     color: var(--text-color-secondary);
 }
@@ -73,29 +89,33 @@
 .toggle-text span {
     color: var(--accent-color-blue);
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
+    margin-left: 4px;
 }
 
 .toggle-text span:hover {
+    color: var(--accent-color-aqua);
     text-decoration: underline;
 }
 
 .error-message {
-    background-color: rgba(220, 53, 69, 0.1);
+    background-color: rgba(239, 68, 68, 0.1);
     color: var(--accent-color-red);
-    padding: 0.5rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    padding: 0.75rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .success-message {
-    background-color: rgba(40, 167, 69, 0.1);
+    background-color: rgba(16, 185, 129, 0.1);
     color: var(--accent-color-green);
-    padding: 0.5rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    padding: 0.75rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .password-input-wrapper {
@@ -105,26 +125,25 @@
 }
 
 .password-input-wrapper input {
-    padding-right: 3.5rem;
-    /* Space for the button */
+    padding-right: 4rem;
 }
 
 .toggle-password-btn {
     position: absolute;
-    right: 10px;
-    background: none;
+    right: 12px;
+    background: transparent;
     border: none;
     color: var(--accent-color-blue);
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 700;
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 6px 10px;
+    border-radius: 6px;
     transition: all 0.2s ease;
+    text-transform: uppercase;
 }
 
 .toggle-password-btn:hover {
-    background-color: rgba(0, 123, 255, 0.1);
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--accent-color-aqua);
 }

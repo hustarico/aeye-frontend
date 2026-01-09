@@ -1,13 +1,20 @@
 :root {
-  --bg-color-main: #1a1a1a;
-  --bg-color-card: #2a2a2a;
-  --bg-color-input: #333333;
-  --text-color-primary: #ffffff;
-  --text-color-secondary: #cccccc;
-  --accent-color-blue: #007bff;
-  --accent-color-green: #28a745;
-  --accent-color-red: #dc3545;
-  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bg-color-main: #0b1120;
+  --bg-color-card: #161e31;
+  --bg-color-input: #1e293b;
+  --text-color-primary: #f8fafc;
+  --text-color-secondary: #94a3b8;
+  --accent-color-blue: #38bdf8;
+  /* lightblue */
+  --accent-color-aqua: #2dd4bf;
+  /* aqua */
+  --accent-color-white: #ffffff;
+  --accent-color-red: #ef4444;
+  --accent-color-green: #10b981;
+  --font-family: 'Outfit', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --glass-bg: rgba(22, 30, 49, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --gradient-primary: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
 }
 
 body {
@@ -35,9 +42,14 @@ button {
   font-family: inherit;
 }
 
+::selection {
+  background-color: rgba(45, 212, 191, 0.3);
+  color: var(--text-color-primary);
+}
+
 /* Scrollbar styles for detailed aesthetic */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -45,10 +57,11 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 4px;
+  background: var(--bg-color-input);
+  border-radius: 10px;
+  border: 2px solid var(--bg-color-main);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #777;
+  background: var(--accent-color-blue);
 }

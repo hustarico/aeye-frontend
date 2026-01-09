@@ -2,45 +2,90 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--bg-color-card);
-    border-bottom: 1px solid #333;
+    padding: 0.75rem 4rem;
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo-placeholder {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--accent-color-blue);
-    /* "Aeye" style */
-    letter-spacing: 1px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
 }
 
 .navbar-right {
     display: flex;
-    gap: 1.5rem;
+    gap: 2.5rem;
     align-items: center;
 }
 
 .nav-link {
     color: var(--text-color-secondary);
     font-weight: 500;
-    transition: color 0.2s;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--text-color-primary);
+    color: var(--accent-color-blue);
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 .logout-btn {
-    background-color: transparent;
-    border: 1px solid var(--accent-color-red);
+    background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.5);
     color: var(--accent-color-red);
-    padding: 0.4rem 1rem;
-    border-radius: 4px;
-    transition: all 0.2s;
+    padding: 0.5rem 1.25rem;
+    border-radius: 99px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 .logout-btn:hover {
     background-color: var(--accent-color-red);
     color: white;
+    border-color: var(--accent-color-red);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .navbar-right {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+    }
 }

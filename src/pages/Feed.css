@@ -1,31 +1,43 @@
 .feed-container {
-    padding: 2rem;
-    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 h1 {
-    margin-bottom: 2rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    text-align: center;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+    font-size: 2.5rem;
 }
 
 .feed-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
     justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
 }
 
 .cam-feed {
     position: relative;
-    width: 600px;
-    height: 400px;
-    background-color: #000;
-    border: 1px solid #333;
-    border-radius: 4px;
+    background-color: var(--bg-color-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    aspect-ratio: 16/10;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cam-feed:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    border-color: rgba(56, 189, 248, 0.3);
 }
 
 .cam-feed img {
@@ -36,27 +48,38 @@ h1 {
 
 .placeholder {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #666;
-    font-family: monospace;
+    color: var(--text-color-secondary);
+    background: radial-gradient(circle at center, #1e293b 0%, #0b1120 100%);
+    gap: 15px;
+}
+
+.placeholder::before {
+    content: 'SIGNAL LOST';
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    opacity: 0.5;
 }
 
 .live-indicator {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: white;
+    gap: 8px;
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #f8fafc;
     text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dot {
@@ -64,27 +87,48 @@ h1 {
     height: 8px;
     background-color: var(--accent-color-red);
     border-radius: 50%;
-    box-shadow: 0 0 5px var(--accent-color-red);
-    animation: pulse 1s infinite alternate;
+    box-shadow: 0 0 8px var(--accent-color-red);
+    animation: pulse 1.5s infinite ease-in-out;
 }
 
 .cam-label {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    color: var(--text-color-secondary);
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent-color-blue);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @keyframes pulse {
-    from {
-        opacity: 1;
+    0% {
+        transform: scale(0.95);
+        opacity: 0.7;
     }
 
-    to {
-        opacity: 0.4;
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+        box-shadow: 0 0 12px var(--accent-color-red);
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+}
+
+@media (max-width: 600px) {
+    .feed-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cam-feed {
+        aspect-ratio: 4/3;
     }
 }
