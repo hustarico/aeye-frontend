@@ -61,19 +61,53 @@ const Login = () => {
                     confirmPassword: formData.confirmPassword
                 };
 
-                await api.post('/auth/register', registerPayload);
-                setIsLogin(true);
-                setError('');
-                setFormData({ username: '', password: '', phoneNumber: '', confirmPassword: '' });
-                setSuccess('Registration successful! Please login.');
+                const regResponse = await api.post('/auth/register', registerPayload);
+
+                // Try to see if token is in registration response, otherwise login
+                let tokenVal = regResponse.data.token || regResponse.data.accessToken;
+
+                if (!tokenVal) {
+                    // Automatically login after registration
+                    const loginResponse = await api.post('/auth/login', {
+                        username: formData.username,
+                        password: formData.password
+                    });
+                    tokenVal = loginResponse.data.token || loginResponse.data.accessToken || (typeof loginResponse.data === 'string' ? loginResponse.data : null);
+                }
+
+                if (tokenVal) {
+                    login(tokenVal);
+                    navigate('/feed');
+                } else {
+                    // Fallback if no token is returned
+                    setIsLogin(true);
+                    setSuccess('Registration successful! Please login.');
+                }
             }
         } catch (err) {
             console.error(err);
+            let errorMessage = 'Authentication failed. Please try again.';
+
             if (err.response) {
-                console.error("Error Status:", err.response.status);
-                console.error("Error Data:", err.response.data);
+                const data = err.response.data;
+                // Handle different error response shapes
+                if (typeof data === 'string') {
+                    errorMessage = data;
+                } else if (data.message) {
+                    errorMessage = data.message;
+                } else if (data.error) {
+                    errorMessage = data.error;
+                }
+
+                // Specifically catch "phone number already in use" cases if they look like backend stack traces or generic messages
+                if (errorMessage.toLowerCase().includes('phone') && (errorMessage.toLowerCase().includes('exists') || errorMessage.toLowerCase().includes('use'))) {
+                    errorMessage = 'This phone number is already registered.';
+                } else if (errorMessage.toLowerCase().includes('username') && (errorMessage.toLowerCase().includes('exists') || errorMessage.toLowerCase().includes('use'))) {
+                    errorMessage = 'This username is already taken. Please choose another one.';
+                }
             }
-            setError(err.response?.data?.message || 'Authentication failed. Check console for details.');
+
+            setError(errorMessage);
         }
     };
 
