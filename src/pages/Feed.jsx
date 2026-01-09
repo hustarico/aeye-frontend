@@ -60,31 +60,55 @@ const Feed = () => {
 
     return (
         <div className="feed-container">
-            <h1>Live Surveillance</h1>
-            <div className="feed-grid">
-                <div className="cam-feed">
-                    <div className="live-indicator">
-                        <span className="dot"></span> Live
+            <section className="live-section">
+                <h1>Live Feed</h1>
+                <div className="live-grid">
+                    {/* Working Cam - Left */}
+                    <div className="cam-feed">
+                        <div className="live-indicator">
+                            <span className="dot"></span> Live
+                        </div>
+                        {image1 ? (
+                            <img src={image1} alt="Camera 1" />
+                        ) : (
+                            <div className="placeholder">Connecting...</div>
+                        )}
+                        <div className="cam-label">Camera 01</div>
                     </div>
-                    {image1 ? (
-                        <img src={image1} alt="Camera 1" />
-                    ) : (
-                        <div className="placeholder">Loading Cam 1...</div>
-                    )}
-                    <div className="cam-label">Live Feed</div>
-                </div>
-                <div className="cam-feed">
-                    <div className="live-indicator">
-                        <span className="dot"></span> Live
+
+                    {/* Placeholder Cam 2 */}
+                    <div className="cam-feed disabled">
+                        <div className="placeholder-no-signal">
+                            <div className="no-signal-icon">∅</div>
+                            <span>No Signal</span>
+                        </div>
+                        <div className="cam-label">Camera 02</div>
                     </div>
-                    {image2 ? (
-                        <img src={image2} alt="Camera 2" />
-                    ) : (
-                        <div className="placeholder">Loading Cam 2...</div>
-                    )}
-                    <div className="cam-label">Last Threat</div>
+
+                    {/* Placeholder Cam 3 */}
+                    <div className="cam-feed disabled">
+                        <div className="placeholder-no-signal">
+                            <div className="no-signal-icon">∅</div>
+                            <span>No Signal</span>
+                        </div>
+                        <div className="cam-label">Camera 03</div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <section className="threat-section">
+                <h2>Last Threat</h2>
+                <div className="threat-grid">
+                    <div className="cam-feed threat-cam">
+                        {image2 ? (
+                            <img src={image2} alt="Last Threat" />
+                        ) : (
+                            <div className="placeholder">Scanning...</div>
+                        )}
+                        <div className="cam-label">Threat Archive</div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
