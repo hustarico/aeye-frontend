@@ -61,7 +61,7 @@ const Feed = () => {
     return (
         <div className="feed-container">
             <section className="live-section">
-                <h1>Live Feed</h1>
+                <h1>Live Video Feed</h1>
                 <div className="live-grid">
                     {/* Working Cam - Left */}
                     <div className="cam-feed">

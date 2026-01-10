@@ -46,7 +46,10 @@ const Login = () => {
                 const tokenVal = response.data.token || response.data.accessToken || (typeof response.data === 'string' ? response.data : null);
 
                 login(tokenVal);
-                navigate('/feed');
+                setSuccess('Login successful');
+                setTimeout(() => {
+                    navigate('/feed');
+                }, 500);
             } else {
                 // REGISTER
                 if (formData.password !== formData.confirmPassword) {
